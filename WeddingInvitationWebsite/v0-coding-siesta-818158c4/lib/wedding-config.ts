@@ -185,9 +185,9 @@ export const wedding = {
   /* --- RSVP ------------------------------------------------------------- */
   rsvp: {
     title: "RSVP",
-    subtitle: "Kindly respond before December 15, 2026",
+    subtitle: "Kindly respond before January 15, 2026",
     description:
-      "We can't wait to celebrate this special day with you, and would be so grateful to receive your response on or before December 15, 2026.",
+      "We can't wait to celebrate this special day with you, and would be so grateful to receive your response on or before January 15, 2026.",
     buttonLabel: "Send Your RSVP",
   },
 
