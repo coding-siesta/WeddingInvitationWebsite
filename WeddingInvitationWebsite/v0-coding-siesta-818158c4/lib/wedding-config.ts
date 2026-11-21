@@ -125,7 +125,7 @@ export const wedding = {
         sectionLabel: "— Bearers & Kids —",
         groups: [
           { heading: "Bible Bearer", names: ["Nelson C. Soledad"] },
-          { heading: "Coin Bearer", names: [""] },
+          { heading: "Coin Bearer", names: ["Sebastian B. Enciso"] },
           { heading: "Ring Bearer", names: ["Lourd Liam Kai Enciso Rama"] },
           { heading: "Flower Girl", names: ["Elizandra Bliss Enciso", "Merin Anaiah E. Hemoroz"] },
         ],
