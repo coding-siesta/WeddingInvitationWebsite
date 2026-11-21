@@ -133,7 +133,13 @@ export async function POST(request: Request) {
 
     const result: unknown = await response.json()
     if (!isRecord(result) || result.ok !== true) {
-      console.error("Google Apps Script did not confirm the RSVP submission.")
+      const scriptError =
+        isRecord(result) && typeof result.error === "string"
+          ? result.error
+          : "No error details were returned."
+      console.error(
+        `Google Apps Script did not confirm the RSVP submission: ${scriptError}`,
+      )
       return Response.json(
         { ok: false, error: "We couldn't save your RSVP. Please try again later." },
         { status: 502 },
