@@ -189,8 +189,6 @@ export const wedding = {
     description:
       "We can't wait to celebrate this special day with you, and would be so grateful to receive your response on or before December 15, 2026.",
     buttonLabel: "Send Your RSVP",
-    // Link to a form (Google Forms, Typeform, mailto:, etc.)
-    link: "https://forms.gle/your-rsvp-form",
   },
 
   /* --- Gifts ------------------------------------------------------------ */
