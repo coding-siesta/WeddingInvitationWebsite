@@ -156,18 +156,6 @@ export function Rsvp() {
 
             <label className="grid gap-2">
               <span className="label-caps text-[0.6rem]">
-                Other invited guests in your party (optional)
-              </span>
-              <input
-                className="min-h-12 rounded-sm border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground"
-                maxLength={300}
-                name="partyMembers"
-                placeholder="Please list only guests named on your invitation"
-              />
-            </label>
-
-            <label className="grid gap-2">
-              <span className="label-caps text-[0.6rem]">
                 Note or dietary requirements (optional)
               </span>
               <textarea
