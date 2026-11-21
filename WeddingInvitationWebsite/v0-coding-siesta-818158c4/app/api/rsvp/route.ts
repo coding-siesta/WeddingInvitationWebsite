@@ -4,9 +4,8 @@ interface RsvpSubmission {
   fullName: string
   email: string
   attending: "yes" | "no"
-  partyMembers: string
   note: string
-  website: string
+  companyFax: string
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -20,14 +19,13 @@ function isText(value: unknown): value is string {
 function parseSubmission(value: unknown): RsvpSubmission | null {
   if (!isRecord(value)) return null
 
-  const { fullName, email, attending, partyMembers, note, website } = value
+  const { fullName, email, attending, note, companyFax } = value
   if (
     !isText(fullName) ||
     !isText(email) ||
     !isText(attending) ||
-    !isText(partyMembers) ||
     !isText(note) ||
-    !isText(website)
+    !isText(companyFax)
   ) {
     return null
   }
@@ -42,9 +40,8 @@ function parseSubmission(value: unknown): RsvpSubmission | null {
     fullName: fullName.trim(),
     email: email.trim(),
     attending: attendanceResponse,
-    partyMembers: partyMembers.trim(),
     note: note.trim(),
-    website,
+    companyFax,
   }
 
   if (
@@ -53,7 +50,6 @@ function parseSubmission(value: unknown): RsvpSubmission | null {
     submission.email.length > 254 ||
     (submission.email &&
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.email)) ||
-    submission.partyMembers.length > 300 ||
     submission.note.length > 1000
   ) {
     return null
@@ -72,7 +68,11 @@ export async function POST(request: Request) {
   }
 
   const submission = parseSubmission(body)
-  if (!submission || submission.website) {
+  if (!submission) {
+    return Response.json({ ok: false, error: "Please check your RSVP details." }, { status: 400 })
+  }
+  if (submission.companyFax) {
+    console.warn("RSVP rejected by the honeypot field.")
     return Response.json({ ok: false, error: "Please check your RSVP details." }, { status: 400 })
   }
 
@@ -116,7 +116,7 @@ export async function POST(request: Request) {
         fullName: submission.fullName,
         email: submission.email,
         attending: submission.attending,
-        partyMembers: submission.partyMembers,
+        partyMembers: "",
         note: submission.note,
       }),
       signal: AbortSignal.timeout(10000),

@@ -173,9 +173,9 @@ export function Rsvp() {
             >
               <label htmlFor="rsvp-website">Leave this field empty</label>
               <input
-                autoComplete="off"
+                autoComplete="new-password"
                 id="rsvp-website"
-                name="website"
+                name="companyFax"
                 tabIndex={-1}
               />
             </div>

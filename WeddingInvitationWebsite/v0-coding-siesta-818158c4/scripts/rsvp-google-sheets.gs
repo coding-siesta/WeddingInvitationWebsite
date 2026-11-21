@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "PASTE_YOUR_GOOGLE_SHEET_ID_HERE"
+const SPREADSHEET_ID = "12ZVTebAEkWjwCk4C-JgXw9WtaFUvRPg0kLKtZnK_j8E"
 const SHEET_NAME = "RSVPs"
 
 function doPost(event) {
@@ -45,7 +45,8 @@ function doPost(event) {
     return jsonResponse({ ok: true })
   } catch (error) {
     console.error(error)
-    return jsonResponse({ ok: false })
+    const message = error instanceof Error ? error.message : String(error)
+    return jsonResponse({ ok: false, error: message })
   }
 }
 
